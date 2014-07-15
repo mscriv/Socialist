@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Youth unemployment:</strong>
+  <%= @statistic.youth_unemployment %>
+</p>
+
+<p>
+  <strong>Property rights:</strong>
+  <%= @statistic.property_rights %>
+</p>
+
+<p>
+  <strong>Fiscal freedom:</strong>
+  <%= @statistic.fiscal_freedom %>
+</p>
+
+<p>
+  <strong>Monetary freedom:</strong>
+  <%= @statistic.monetary_freedom %>
+</p>
+
+<p>
+  <strong>Freedom from corruption:</strong>
+  <%= @statistic.freedom_from_corruption %>
+</p>
+
+<%= link_to 'Edit', edit_statistic_path(@statistic) %> |
+<%= link_to 'Back', statistics_path %>

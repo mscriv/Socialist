@@ -1,0 +1,35 @@
+<h1>Listing statistics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Youth unemployment</th>
+      <th>Property rights</th>
+      <th>Fiscal freedom</th>
+      <th>Monetary freedom</th>
+      <th>Freedom from corruption</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statistics.each do |statistic| %>
+      <tr>
+        <td><%= statistic.youth_unemployment %></td>
+        <td><%= statistic.property_rights %></td>
+        <td><%= statistic.fiscal_freedom %></td>
+        <td><%= statistic.monetary_freedom %></td>
+        <td><%= statistic.freedom_from_corruption %></td>
+        <td><%= link_to 'Show', statistic %></td>
+        <td><%= link_to 'Edit', edit_statistic_path(statistic) %></td>
+        <td><%= link_to 'Destroy', statistic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Statistic', new_statistic_path %>
