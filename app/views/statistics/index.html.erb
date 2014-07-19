@@ -26,7 +26,7 @@
         <td><%= statistic.freedom_from_corruption %></td>
         <td><%= link_to 'Show', country_statistic_path(@country, statistic) %></td>
         <td><%= link_to 'Edit', edit_country_statistic_path(@country, statistic) %></td>
-        <td><%= link_to 'Destroy', [@post, statistic], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [@country, statistic], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

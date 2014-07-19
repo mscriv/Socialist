@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @country.name %></h1>
+<h4><strong>OVERALL SCORE <%= @country.score %></strong></h4>
+<h4><strong>RANK <%= @country.rank %></strong></h4>
 
+<div>
+  <h3>RULE OF LAW</h3>
 <p>
   <strong>Youth unemployment:</strong>
   <%= @statistic.youth_unemployment %>
@@ -9,7 +14,9 @@
   <strong>Property rights:</strong>
   <%= @statistic.property_rights %>
 </p>
-
+</div>
+<div>
+<h3> LIMITED GOVERNMENT</h3>
 <p>
   <strong>Fiscal freedom:</strong>
   <%= @statistic.fiscal_freedom %>
@@ -25,5 +32,5 @@
   <%= @statistic.freedom_from_corruption %>
 </p>
 
-<%= link_to 'Edit', edit_statistic_path(@statistic) %> |
-<%= link_to 'Back', statistics_path %>
+<%= link_to 'Edit', edit_country_statistic_path(@country, @statistic) %> |
+<%= link_to 'Back', country_statistics_path(@country) %>

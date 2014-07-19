@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @statistic %> |
-<%= link_to 'Back', statistics_path %>
+<%= link_to 'Show', country_statistic_path(@country, @statistic) %> |
+<%= link_to 'Back', country_statistics_path(@country) %>
