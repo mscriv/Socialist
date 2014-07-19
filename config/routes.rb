@@ -1,5 +1,8 @@
 Socialst::Application.routes.draw do
+  
+  resources :countries do
   resources :statistics
+  end
 
   resources :countries do
     resources :categories

@@ -1,10 +1,11 @@
 class StatisticsController < ApplicationController
+  before_action :load_country
   before_action :set_statistic, only: [:show, :edit, :update, :destroy]
 
   # GET /statistics
   # GET /statistics.json
   def index
-    @statistics = Statistic.all
+    @statistics = @country.statistics
   end
 
   # GET /statistics/1
@@ -14,7 +15,7 @@ class StatisticsController < ApplicationController
 
   # GET /statistics/new
   def new
-    @statistic = Statistic.new
+    @statistic = @country.statistics.build
   end
 
   # GET /statistics/1/edit
@@ -24,11 +25,11 @@ class StatisticsController < ApplicationController
   # POST /statistics
   # POST /statistics.json
   def create
-    @statistic = Statistic.new(statistic_params)
+    @statistic = @country.statistics.build(statistic_params)
 
     respond_to do |format|
       if @statistic.save
-        format.html { redirect_to @statistic, notice: 'Statistic was successfully created.' }
+        format.html { redirect_to [@country, @statistic], notice: 'Statistic was successfully created.' }
         format.json { render action: 'show', status: :created, location: @statistic }
       else
         format.html { render action: 'new' }
@@ -41,8 +42,8 @@ class StatisticsController < ApplicationController
   # PATCH/PUT /statistics/1.json
   def update
     respond_to do |format|
-      if @statistic.update(statistic_params)
-        format.html { redirect_to @statistic, notice: 'Statistic was successfully updated.' }
+      if @statistic.update_attributes(statistic_params)
+        format.html { redirect_to [@country, @statistic], notice: 'Statistic was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +57,7 @@ class StatisticsController < ApplicationController
   def destroy
     @statistic.destroy
     respond_to do |format|
-      format.html { redirect_to statistics_url }
+      format.html { redirect_to country_statistics_url(@country) }
       format.json { head :no_content }
     end
   end
@@ -64,11 +65,14 @@ class StatisticsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_statistic
-      @statistic = Statistic.find(params[:id])
+      @statistic = @country.statistics.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def statistic_params
       params.require(:statistic).permit(:youth_unemployment, :property_rights, :fiscal_freedom, :monetary_freedom, :freedom_from_corruption)
     end
+  def load_country
+    @country = Country.find(params[:country_id])
+  end
 end

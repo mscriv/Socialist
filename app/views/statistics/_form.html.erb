@@ -1,4 +1,4 @@
-<%= form_for(@statistic) do |f| %>
+<%= form_for([@country, @statistic]) do |f| %>
   <% if @statistic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@statistic.errors.count, "error") %> prohibited this statistic from being saved:</h2>
