@@ -1,9 +1,9 @@
 Socialst::Application.routes.draw do
   resources :statistics
 
-  resources :categories
-
-  resources :countries
+  resources :countries do
+    resources :categories
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

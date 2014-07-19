@@ -5,4 +5,6 @@ class Statistic
   field :fiscal_freedom, type: BigDecimal
   field :monetary_freedom, type: BigDecimal
   field :freedom_from_corruption, type: BigDecimal
+  
+  embedded_in :country, inverse_of: :statistics
 end
